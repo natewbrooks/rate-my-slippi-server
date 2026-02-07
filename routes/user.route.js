@@ -1,10 +1,7 @@
 const express = require("express")
 const router = express.Router();
+const { userController } = require("../controllers")
 
-router.get("/", (req, res) => {
-    console.log("slippi user")
-})
-
-
+router.get("/:tag", userController.getSlippiUser)
 
 module.exports = router
