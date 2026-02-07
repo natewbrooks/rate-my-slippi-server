@@ -22,7 +22,7 @@ const validateTag = (tag) => {
  * TAG CONSTRAINTS:
  *  Maximum 8 characters
  *  Must include a # symbol, included in character count
- *  Only numbers are allowed after the # symbo
+ *  Only numbers are allowed after the # symbol
  */
 
 
