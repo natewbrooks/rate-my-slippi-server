@@ -6,12 +6,15 @@ const getSlippiUser = async (req, res) => {
     try {
         const tag = validateTag(req.params.tag);
         const slippiUser = await req.slippi.getPlayer(tag);
-        const charImgs = slippiUser.getAllCharacters();
-        slippiUser.characters = charImgs;
-        if (!slippiUser) res.status(404).json({ error: "User does not exist!"})
-        res.status(200).json(slippiUser);
+        const charImgs = await slippiUser.getCharacterImages();
+        const userData = {
+            ...slippiUser,
+            characters: charImgs
+        }
+        if (!userData) res.status(404).json({ error: "User does not exist!"})
+        res.status(200).json(userData);
     } catch (error) {
-        res.status(403).json({ error: "Tag must be in the form XXX#000"})
+        res.status(500).json({ error: "Error getting the user!"})
     }
 }
 

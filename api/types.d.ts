@@ -38,8 +38,8 @@ export type CharacterName = keyof CharacterIDs;
 export type PlayableCharacterName = Exclude<CharacterName, 'None'>;
 
 export declare namespace characters {
-  export declare const CHARACTER_IDS: CharacterIDs;
-  export declare const CHARACTER_COLORS: Partial<Record<PlayableCharacterName, string>>;
+  export const CHARACTER_IDS: CharacterIDs;
+  export const CHARACTER_COLORS: Partial<Record<PlayableCharacterName, string>>;
 
   export function getCharacterId(name: CharacterName, dkClaus?: boolean): number | null;
   export function getCharacterName(id: number): CharacterName | null;
@@ -134,6 +134,21 @@ export class RankedNetplayProfile {
   getTotalCharacterGames(): number;
   getWinRate(): number;
 }
+
+// ============================================================================
+// Subscription Status
+// ============================================================================
+
+export type SubscriptionLevel = 'NONE' | 'BRONZE' | 'SILVER' | 'GOLD';
+
+export class SubscriptionStatus {
+  level: SubscriptionLevel;
+  hasGiftSub: boolean;
+  active: boolean;
+
+  constructor(data?: Partial<SubscriptionStatus>);
+}
+
 
 // ============================================================================
 // Slippi User
